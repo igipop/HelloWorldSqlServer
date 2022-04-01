@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "HelloWorldSqlServer": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+version: '3.0'
+services:
+  dotnet:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - db=Server=sqlserver,1433;Database=master;User Id=sa;Password=yourStrong(!)Password
+    depends_on:
+      - sqlserver
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=yourStrong(!)Password
+      - MSSQL_PID=Express
+    ports:
+      - 1433:1433
+
+
+
+  #docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=yourStrong(!)Password" -e "MSSQL_PID=Express" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest
